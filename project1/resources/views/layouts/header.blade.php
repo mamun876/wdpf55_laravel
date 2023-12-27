@@ -16,7 +16,7 @@
         <a class="nav-link" href="contact">Contact</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
+        <a class="nav-link " href="contactList">All Contact Messages</a>
       </li>
     </ul>
   </div>
