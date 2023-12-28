@@ -1,0 +1,7 @@
+
+##debugbar command
+** composer require barryvdh/laravel-debugbar --dev
+
+installation
+
+composer create-project laravel/laravel:^8.0 project2
