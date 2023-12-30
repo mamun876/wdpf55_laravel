@@ -14,13 +14,13 @@
   </style>
 </head>
 <body>
-@include('layouts.header')
+@include('frontend.layouts.header')
 
 
 @yield('content')
 
 
-@include('layouts.footer')
+@include('frontend.layouts.footer')
 
 
 
