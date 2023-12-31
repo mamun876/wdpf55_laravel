@@ -20,9 +20,10 @@ Route::get('/', function () {
 });
 Route::get('/admin', function () {
     return view('backend/dashboard');
-});
+})->middleware('auth.basic');
 
 Route::get('/login', function () {
     return view('backend/login');
 });
 Route::post('/login',[LoginController::class, 'authenticate']);
+Route::get('/logout',[LoginController::class, 'logout']);
