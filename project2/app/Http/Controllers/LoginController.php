@@ -21,18 +21,20 @@ class LoginController extends Controller
         // print_r($credentials);
         // $pass = HASH::make('masum123');
         // echo $pass;
- 
+
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
- 
-            return redirect()->intended('admin');
+            return view('dashboard');
+
+            // return redirect()->intended('admin');
         }
- 
+
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ]);
     }
-    public function logout(Request $req){
+    public function logout(Request $req)
+    {
         Auth::logout();
         $req->session()->invalidate();
         $req->session()->regenerateToken();

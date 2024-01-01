@@ -1,0 +1,3 @@
+ 
+ ####to refresh migrate after afdding new column in database table
+ **php artisan migrate:refresh
