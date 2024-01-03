@@ -1,0 +1,9 @@
+Laravel with Breeze Authentication1. 
+1.Laravel installation
+2. Database connectivity with env
+3. composer require laravel/breeze --dev
+4. php artisan breeze:install
+5. npm install
+6. npm run dev
+7. php artisan migrate
+8. php artisan serve
