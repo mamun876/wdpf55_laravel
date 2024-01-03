@@ -216,7 +216,7 @@
               @csrf
             
             <i class="bi bi-box-arrow-right"></i>
-              <span><button type="submit">Sign Out</button></span>
+              <span><button style="border:none; outline:none" type="submit">Sign Out</button></span>
             </form>
           </li>
 

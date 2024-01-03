@@ -9,6 +9,26 @@
       </a>
     </li><!-- End Dashboard Nav -->
 
+    <!-- PRODUCTS NAV -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+        <i class="bi bi-layout-text-window-reverse"></i><span>Product Manage</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <li>
+          <a href="{{URL('products')}}">
+            <i class="bi bi-circle"></i><span>All Products</span>
+          </a>
+        </li>
+        <li>
+          <a href="{{URL('product/create')}}">
+            <i class="bi bi-circle"></i><span>New Products</span>
+          </a>
+        </li>
+      </ul>
+    </li><!-- End Tables Nav -->
+    <!-- PRODUCTS NAV END -->
+
     <li class="nav-item">
       <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
         <i class="bi bi-menu-button-wide"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
