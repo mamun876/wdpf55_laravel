@@ -14,3 +14,8 @@ CRUD(product+category)
 
 php artisan make:model Category -mcr
 php artisan make:model Product -mcr
+
+
+##authentication step
+1. Migration for admin
+2/ Model for admin
