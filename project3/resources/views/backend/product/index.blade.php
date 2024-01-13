@@ -28,6 +28,8 @@
                 <tr>
                   <th>SL</th>
                   <th>Name</th>
+                  <th>Price</th>
+                  <th>Descripotion</th>
                   <th>Category</th>
                   <th>Action</th>
 
@@ -38,6 +40,8 @@
                 <tr>
                   <td>{{$key+1}}</td>
                   <td>{{$item->name}}</td>
+                  <td>{{$item->price}}</td>
+                  <td>{{$item->description}}</td>
                   <td>{{$item->category->name}}</td>
                   <td><a href="">Edit</a> | <a href=""></a>delete</td>
                 </tr>
