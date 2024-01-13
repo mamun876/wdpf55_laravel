@@ -18,8 +18,12 @@ class ProductController extends Controller
      */
     public function index()
     {
-       $data['products']= Product::all();
-       return view('backend/product.index', $data);
+
+        $data['products']=Product::all();
+        return view('backend.product.index', $data);
+
+    //    $data['products']= Product::all();
+    //    return view('backend/product.index', $data);
     }
 
     /**

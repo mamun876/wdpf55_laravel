@@ -29,11 +29,11 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-Route::get('admin/login', [AdminController::class, 'login']);
-Route::post('admin/login', [AdminController::class, 'store'])->name('adminLogin');
-Route::get('admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard')->middleware()->guard('admin');
-Route::get('student/login', [StudentController::class, 'login']);
-Route::post('student/login', [StudentController::class, 'store'])->name('studentLogin');
-Route::get('student/dashboard', [StudentController::class, 'dashboard'])->name('student.dashboard')->middleware()->guard('student');
+// Route::get('admin/login', [AdminController::class, 'login']);
+// Route::post('admin/login', [AdminController::class, 'store'])->name('adminLogin');
+// Route::get('admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard')->middleware()->guard('admin');
+// Route::get('student/login', [StudentController::class, 'login']);
+// Route::post('student/login', [StudentController::class, 'store'])->name('studentLogin');
+// Route::get('student/dashboard', [StudentController::class, 'dashboard'])->name('student.dashboard')->middleware()->guard('student');
 
 require __DIR__.'/auth.php';
