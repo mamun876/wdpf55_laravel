@@ -15,7 +15,8 @@ return new class extends Migration
             
             $table->id();
            $table->string('name', 50);
-            $table->timestamps();
+           $table->timestamp('created_at')->useCurrent();
+           $table->timestamp('updated_at')->useCurrent();
         });
     }
 

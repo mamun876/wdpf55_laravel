@@ -19,11 +19,11 @@ class ProductController extends Controller
     public function index()
     {
 
-        $data['products']=Product::all();
+        $data['products'] = Product::all();
         return view('backend.product.index', $data);
 
-    //    $data['products']= Product::all();
-    //    return view('backend/product.index', $data);
+        //    $data['products']= Product::all();
+        //    return view('backend/product.index', $data);
     }
 
     /**
@@ -31,8 +31,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-     $data['cats']  = Category::all();
-     return view('backend.product.create', $data);
+        $data['cats']  = Category::all();
+        return view('backend.product.create', $data);
     }
 
     /**
@@ -40,27 +40,51 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-       
-        $rules = [
-            'name' => 'required|string|max:255',
-            'description' => 'required|string',
-            'price' => 'required|numeric',
+
+        // $rules = [
+        //     'name' => 'required|string|max:255',
+        //     'description' => 'required|string',
+        //     'price' => 'required|numeric',
+        //     'category' => 'required',
+        // ];
+        // $validate = $request->validate($rules);
+        // if($validate){
+        //     $data=[
+        //         'name'=>$request->name,
+        //         'description'=>$request->description,
+        //         'price'=>$request->price,
+        //         'category_id'=>$request->category,
+        //     ];
+        //     DB::table('products')->save($data);
+        //     return redirect()->with('msg' ,'Data added successfully');
+
+        // }
+        // dd($request->photo);
+        $filename = time(). "." . $request->photo->extension();
+        $validate = $request->validate([
+            'name' => 'required | min:4',
+            'description' => 'required | min:6',
+            'price' => 'required | numeric',
             'category' => 'required',
-        ];
-        $validate = $request->validate($rules);
-        if($validate){
-            $data=[
-                'name'=>$request->name,
-                'description'=>$request->description,
-                'price'=>$request->price,
-                'category_id'=>$request->category,
+            'photo' => 'mimes:jpg, jpeg, png, gif'
+        ]);
+        if ($validate) {
+            $data = [
+                'name' => $request->name,
+                'description' => $request->description,
+                'price' => $request->price,
+                'category_id' => $request->category,
+                'tags'=> $request->tags,
+                'image' => $filename
             ];
-            DB::table('products')->save($data);
-            return redirect()->with('msg' ,'Data added successfully');
-
+            // DB::table('products')->save($data);
+            $model = new Product();
+            if($model->create($data)){
+                $request->photo->move(public_path('image'), $filename);
+                return redirect('products')->with('msg', 'Data added successfully');
+            }
+            
         }
-
-       
     }
 
     /**

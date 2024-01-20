@@ -12,10 +12,16 @@ class Product extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'name', 'description', 'price', 'category_id'
+        'name', 'description', 'price', 'category_id', 'tags','image', 'availability'
     ];
     public function category():BelongsTo
     {
         return $this->belongsTo(Category::class, 'category_id');
+    }
+    public function setTagsAttribute($value){
+        $this->attributes['tags']=json_encode($value);
+    }
+    public function getTagsAttribute($value){
+        $this->attributes['tags']=json_decode($value);
     }
 }

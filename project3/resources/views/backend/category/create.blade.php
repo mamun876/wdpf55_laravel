@@ -23,17 +23,17 @@
             <h5 class="card-title">General Form Elements</h5>
 
             <!-- session inserted successfull message -->
-            @if(session('msg'))
+            <!-- @if(session('msg'))
             <div class="alert alert-success">
               {{ session('msg') }}
             </div>
-            @endif
+            @endif -->
             <!-- error message -->
-            @if(session('error'))
+            <!-- @if(session('error'))
         <div class="alert alert-danger">
             {{ session('error') }}
         </div>
-    @endif
+    @endif -->
 
             <!-- General Form Elements -->
             <form action="{{route('category.store')}}" method="post">

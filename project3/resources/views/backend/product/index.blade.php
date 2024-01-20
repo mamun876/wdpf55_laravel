@@ -27,6 +27,7 @@
               <thead>
                 <tr>
                   <th>SL</th>
+                  <th>Image</th>
                   <th>Name</th>
                   <th>Price</th>
                   <th>Descripotion</th>
@@ -39,10 +40,13 @@
                 @foreach($products as $key=>$item)
                 <tr>
                   <td>{{$key+1}}</td>
+                  <td><img src="{{ asset('image/' . $item->image) }}" width="100px" alt=""></td>
+
                   <td>{{$item->name}}</td>
                   <td>{{$item->price}}</td>
                   <td>{{$item->description}}</td>
-                  <td>{{$item->category->name}}</td>
+                  <td>{{implode(",", $item->tags)}}</td>
+                  <td>{{$item->category->name ?? 'N/A'}}</td>
                   <td><a href="">Edit</a> | <a href=""></a>delete</td>
                 </tr>
                 @endforeach
