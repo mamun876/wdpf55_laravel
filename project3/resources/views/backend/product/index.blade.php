@@ -32,6 +32,7 @@
                   <th>Price</th>
                   <th>Descripotion</th>
                   <th>Category</th>
+                  <th>tags</th>
                   <th>Action</th>
 
                 </tr>
@@ -44,10 +45,18 @@
 
                   <td>{{$item->name}}</td>
                   <td>{{$item->price}}</td>
-                  <td>{{$item->description}}</td>
+                  <td>{!!$item->description!!}</td>
                   <td>{{implode(",", $item->tags)}}</td>
                   <td>{{$item->category->name ?? 'N/A'}}</td>
-                  <td><a href="">Edit</a> | <a href=""></a>delete</td>
+                  <td>
+                    <ul>
+                    @foreach($item->tags as $tag)
+                    <li>{{$tag}}</li>
+                    @endforeach
+                    </ul>
+                    
+                  </td>
+                  <td><a href="{{route('product.edit', $item->id)}}">Edit</a> | <a href="{{route('product.delete', $item->id)}}" onclick="return confirm('are you sure to delete')">delete</a></td>
                 </tr>
                 @endforeach
 

@@ -60,7 +60,7 @@ class ProductController extends Controller
 
         // }
         // dd($request->photo);
-        $filename = time(). "." . $request->photo->extension();
+        $filename = time() . "." . $request->photo->extension();
         $validate = $request->validate([
             'name' => 'required | min:4',
             'description' => 'required | min:6',
@@ -74,16 +74,16 @@ class ProductController extends Controller
                 'description' => $request->description,
                 'price' => $request->price,
                 'category_id' => $request->category,
-                'tags'=> $request->tags,
+                'tags' => $request->tags,
+                'availability' => $request->availability,
                 'image' => $filename
             ];
             // DB::table('products')->save($data);
             $model = new Product();
-            if($model->create($data)){
+            if ($model->create($data)) {
                 $request->photo->move(public_path('image'), $filename);
                 return redirect('products')->with('msg', 'Data added successfully');
             }
-            
         }
     }
 
@@ -100,22 +100,44 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $products =   Product::find($id);
+        $cats = Category::all();
+        return view('backend.product.edit', compact('products', 'cats'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $filename = time() . "." . $request->photo->extension();
+        
+        
+        $model = Product::find($id);
+            $data = [
+                'name' => $request->name,
+                'description' => $request->description,
+                'price' => $request->price,
+                'category_id' => $request->category,
+                'tags' => $request->tags,
+                'availability' => $request->availability,
+                'image' => $filename
+            ];
+            // DB::table('products')->save($data);
+            if ($model->update($data)) {
+                $request->photo->move(public_path('image'), $filename);
+                return redirect('products')->with('msg', 'Update successfully');
+            }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function delete(string $id)
     {
-        //
+        $data = Product::find($id);
+
+        $data->delete();
+        return redirect('products')->with('msg', 'successfully deleted');
     }
 }

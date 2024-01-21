@@ -22,6 +22,7 @@ class Product extends Model
         $this->attributes['tags']=json_encode($value);
     }
     public function getTagsAttribute($value){
-        $this->attributes['tags']=json_decode($value);
+    //    return $this->attributes['tags']=json_decode($value);
+        return is_array($value) ? $value : json_decode($value, true);
     }
 }
