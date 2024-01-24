@@ -5,12 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Laravel\Scout\Searchable;
 
 
 
 class Product extends Model
 {
-    use HasFactory;
+    use HasFactory, Searchable;
     protected $fillable=[
         'name', 'description', 'price', 'category_id', 'tags','image', 'availability'
     ];
@@ -24,5 +25,13 @@ class Product extends Model
     public function getTagsAttribute($value){
     //    return $this->attributes['tags']=json_decode($value);
         return is_array($value) ? $value : json_decode($value, true);
+    }
+
+    public function toSearchableArray()
+    {
+        return [
+            'name' => (string) $this->name,         // Cast 'name' to string and include it in the searchable array
+            'description' => $this->description,   // Include 'description' in the searchable array
+        ];
     }
 }

@@ -11,6 +11,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\ProductController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -73,6 +74,11 @@ Route::middleware('auth')->group(function () {
      Route::get('product/delete/{id}', [ProductController::class, 'delete'])
         ->name('product.delete');
 
+        // FIndProductRoute
+        Route::get('findproducts', [SearchController::class, 'search']);
+           
+        } );
+
     // category
     Route::get('category', [CategoryController::class, 'index'])
         ->name('category.index');
@@ -86,4 +92,4 @@ Route::middleware('auth')->group(function () {
         ->name('category.update');
     Route::get('Category/delete/{id}', [CategoryController::class, 'delete'])
         ->name('category.delete');
-});
+;
