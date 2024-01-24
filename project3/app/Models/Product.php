@@ -30,8 +30,8 @@ class Product extends Model
     public function toSearchableArray()
     {
         return [
-            'name' => (string) $this->name,         // Cast 'name' to string and include it in the searchable array
-            'description' => $this->description,   // Include 'description' in the searchable array
+            'name' => $this->name,
+            'description' => $this->description,
         ];
     }
 }

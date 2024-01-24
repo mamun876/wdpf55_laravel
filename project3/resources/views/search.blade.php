@@ -23,7 +23,7 @@
             <h5 class="card-title">Default Table</h5>
 
             <!-- Default Table -->
-            <form action="get">
+            <form action="" method="get">
                 <input type="text" name="search" placeholder="search">
             </form>
             <table class="table">

@@ -15,14 +15,17 @@ class SearchController extends Controller
     public function search(Request $request): View
     {
         $categories = Category::all();
-
-        if ($request->filled('search')) {
-            $products = Product::search($request->input('search'))->get();
-        } else {
+        
+        if($request->filled('search')){
+            $products = Product::search($request->search)->get();
+        }else{
             $products = Product::all();
         }
 
-        return view('search', compact('products', 'categories'));
+
+        
+        
+        return view('search', compact('products','categories')); 
     }
 
     /**
