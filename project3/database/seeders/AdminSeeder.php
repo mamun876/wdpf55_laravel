@@ -20,12 +20,12 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('admins')->insert([
-            'name' => 'ibnat',
-            'email' => 'ibnat@gmail.com',
-            'password' => Hash::make('ibnat'),
-            'status' =>'1'
-        ]);
+        // DB::table('admins')->insert([
+        //     'name' => 'ibnat',
+        //     'email' => 'ibnat@gmail.com',
+        //     'password' => Hash::make('ibnat'),
+        //     'status' =>'1'
+        // ]);
        
     }
 }

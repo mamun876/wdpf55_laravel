@@ -25,6 +25,11 @@
             <!-- Table with stripped rows -->
             <table class="table datatable">
               <thead>
+                @if(session('success'))
+                <div class="alert alert-danger">
+                  {{session('success')}}
+                </div>
+                @endif
                 <tr>
                   <th>SL</th>
                   <th>Image</th>
@@ -56,7 +61,11 @@
                     </ul>
                     
                   </td>
-                  <td><a href="{{route('product.edit', $item->id)}}">Edit</a> | <a href="{{route('product.delete', $item->id)}}" onclick="return confirm('are you sure to delete')">delete</a></td>
+                  <td><a href="{{route('product.edit', $item->id)}}">Edit</a> | <a href="{{route('product.delete', $item->id)}}" onclick="return confirm('are you sure to delete')">delete</a>
+                  <p class="btn-holder"><a href="{{ route('add.to.cart', $item->id) }}" class="btn btn-warning btn-block text-center" role="button">Add to cart</a> </p>
+                
+                </td>
+                  
                 </tr>
                 @endforeach
 

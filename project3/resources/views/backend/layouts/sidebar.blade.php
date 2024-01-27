@@ -45,6 +45,23 @@
         </li>
       </ul>
     </li><!-- End Tables Nav -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" data-bs-target="#brand-nav" data-bs-toggle="collapse" href="#">
+        <i class="bi bi-layout-text-window-reverse"></i><span>Brand Manage</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="brand-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <li>
+          <a href="{{route('brands.index')}}">
+            <i class="bi bi-circle"></i><span>All Brands</span>
+          </a>
+        </li>
+        <!-- <li>
+          <a href="{{route('category.create')}}">
+            <i class="bi bi-circle"></i><span>New Brands</span>
+          </a>
+        </li> -->
+      </ul>
+    </li><!-- End Tables Nav -->
     <!-- Category NAV END -->
 
     <li class="nav-item">

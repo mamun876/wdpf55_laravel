@@ -11,6 +11,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\ProductController;
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
@@ -71,25 +72,29 @@ Route::middleware('auth')->group(function () {
         ->name('product.edit');
     Route::post('product/update/{id}', [ProductController::class, 'update'])
         ->name('product.update');
-     Route::get('product/delete/{id}', [ProductController::class, 'delete'])
+    Route::get('product/delete/{id}', [ProductController::class, 'delete'])
         ->name('product.delete');
 
-        // FIndProductRoute
-        Route::get('findproducts', [SearchController::class, 'search']);
-           
-        } );
+    // FIndProductRoute
+    Route::get('findproducts', [SearchController::class, 'search']);
 
-    // category
-    Route::get('category', [CategoryController::class, 'index'])
-        ->name('category.index');
-    Route::get('category/create', [CategoryController::class, 'create'])
-        ->name('category.create');
-    Route::post('Category/store', [CategoryController::class, 'store'])
-        ->name('category.store');
-    Route::get('Category/edit/{id}', [CategoryController::class, 'edit'])
-        ->name('category.edit');
-    Route::post('Category/update', [CategoryController::class, 'update'])
-        ->name('category.update');
-    Route::get('Category/delete/{id}', [CategoryController::class, 'delete'])
-        ->name('category.delete');
-;
+});
+
+// category
+Route::get('category', [CategoryController::class, 'index'])
+    ->name('category.index');
+Route::get('category/create', [CategoryController::class, 'create'])
+    ->name('category.create');
+Route::post('Category/store', [CategoryController::class, 'store'])
+    ->name('category.store');
+Route::get('Category/edit/{id}', [CategoryController::class, 'edit'])
+    ->name('category.edit');
+Route::post('Category/update', [CategoryController::class, 'update'])
+    ->name('category.update');
+Route::get('Category/delete/{id}', [CategoryController::class, 'delete'])
+    ->name('category.delete');
+
+    // Brand ROute
+    Route::resource('brands', BrandController::class);
+
+// Cart Route
